@@ -9,14 +9,18 @@ document.addEventListener('DOMContentLoaded', function() {
   btnAlterarText.addEventListener('click', function() {
     if (oneParagrafo.textContent === textoOriginal) {
       alteraText(oneParagrafo, novoTexto);
-      btnAlterarText.textContent = "Voltar texto original";
+      alteraStateBtn("Voltar texto original");
     } else {
       alteraText(oneParagrafo, textoOriginal);
-      btnAlterarText.textContent = "Alterar texto";
+      alteraStateBtn("Alterar texto");
     }
   });
 });
 
 function alteraText(el, newEl) {
   el.textContent = newEl;
+}
+
+function alteraStateBtn(el) {
+  btnAlterarText.textContent = el;
 }

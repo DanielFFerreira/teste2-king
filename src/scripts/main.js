@@ -1,25 +1,22 @@
+/*================= JAVASCRIPT =================*/
 document.addEventListener('DOMContentLoaded', function() {
-  const btnName = document.getElementById('btnName');
-  btnName.addEventListener('click', handleButtonClick);
+  const btnAlterarText = document.getElementById('btnAlterarText');
+  const oneParagrafo = document.getElementById('oneParagrafo');
+
+  const textoOriginal = oneParagrafo.textContent;
+  const novoTexto = "Este é um outro parágrafo";
+
+  btnAlterarText.addEventListener('click', function() {
+    if (oneParagrafo.textContent === textoOriginal) {
+      alteraText(oneParagrafo, novoTexto);
+      btnAlterarText.textContent = "Voltar texto original";
+    } else {
+      alteraText(oneParagrafo, textoOriginal);
+      btnAlterarText.textContent = "Alterar texto";
+    }
+  });
 });
 
-function handleButtonClick() {
-  const UserName = prompt('Digite seu nome: ');
-  showAlert(UserName);
-}
-
-function showAlert(message) {
-  if(message) {
-    Swal.fire({
-      title: "Olá",
-      text: `Bem-vindo, ${message}!`,
-      icon: "success"
-    });
-  } else {
-    Swal.fire({
-      title: "Erro",
-      text: "Você não inseriu um nome",
-      icon: "error"
-    });
-  }
+function alteraText(el, newEl) {
+  el.textContent = newEl;
 }
